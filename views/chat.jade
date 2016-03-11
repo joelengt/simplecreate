@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title Chat
+	link(rel="stylesheet", href="./css/style.css")
+body
+	h1(class="title") Welcome! #{user} Enjoy to Chat with friends | Socket.io
+	ul(id="messages")
+	form(action="")
+		input(type="text", id="user", value="#{user}" placeholder="Tu nombre de usuario", name="")
+		input(type="text", id="message", placeholder="Tu mensaje" autocomplete="off")
+		button Send
+
+script(src="https://cdn.socket.io/socket.io-1.2.0.js")
+script(src="http://code.jquery.com/jquery-1.11.1.js")
+script(type="text/javascript" src="./js/main.js")

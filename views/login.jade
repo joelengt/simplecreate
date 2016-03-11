@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title Document
+	link(rel="stylesheet", href="./css/login.css")
+body
+	h1 Please, LogIn
+
+	form(action="/chat", method="post", autocomplete="off")
+		div
+			label User
+			input(type="text", name="nombre", placeholder="Ingresar Nombre", required)
+		div
+			label Password
+			input(type="password", name="clave", placeholder="Ingresar Contraseña",required)
+		div
+			input(type="submit", value="Entrar")
+
+	p(class="menssage_error") #{msg} 

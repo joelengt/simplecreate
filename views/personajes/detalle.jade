@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title Detalle #{pj.name}
+body
+	h1 Detalle #{pj.name}
+	img(src="#{pj.avatar}", alt="#{pj.name}", width="300")
+	p Id: #{pj._id}
+	p edad: #{pj.age}
+	br
+	div
+		form(action="/personajes/update/#{pj._id}", method="post")
+			button Update	
+		form(action="/personajes/delete/#{pj._id}", method="post")
+			button Delete
+	p #{msg}

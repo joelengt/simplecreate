@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title ¿Delete personaje?
+body
+	h1 ¿DELETE? : #{pj.name}
+	img(src="#{pj.avatar}", alt="#{pj.name}", width="300")
+	p ID: #{pj._id}
+	br
+	h3 Confirmar, DELETE!!
+	form(action="/personajes/delete/#{pj._id}?_method=delete", method="post")
+		div
+			label usuario
+			input(type="text", name="usuario")
+		div
+			label contraseña
+			input(type="password", name="clave")
+		button Delete
+
+	p #{msg}
+	

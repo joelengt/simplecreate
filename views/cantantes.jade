@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title Listan de Cantantes
+body
+	h1 Los mejores cantantes
+	div
+		a(href="/personajes/register") Registrar Personaje
+	ul
+		each element in singers
+			li 
+				h3 Name: #{element.name}
+				img(src="#{element.avatar}", width="200")
+				p Age: #{element.age}
+				form(action="/personajes/detalle/#{element._id}", method="get")
+					button Ver Detallers

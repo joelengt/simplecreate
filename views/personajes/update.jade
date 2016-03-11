@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="en")
+head
+	meta(charset="UTF-8")
+	title Document
+	link(rel="stylesheet", href="./css/style.css")
+body
+	p Elemento Actual:
+	h1 Update: #{name} | id: #{id}
+	img(src="#{avatar}", width="200")
+	p Age: #{age}
+	br
+	h3 Editar los Nuevos Campos
+	form(action="/personajes/update/#{id}?_method=put", method="post", enctype="multipart/form-data")
+		div
+			label User
+			input(type="text", value="#{name}", name="name")
+		div
+			label Age
+			input(type="text", value="#{age}", name="age")
+		div
+			label Cover
+			input(type="file", value="#{avatar}" name="image_avatar")
+		div
+			input(type="submit", name="btn_send")
