@@ -1,5 +1,5 @@
 # SimpleCreateApp v0.0.1
-App CRUD con JavaScript, Nodejs, Express, MongoDB, jade
+App CRUD con JavaScript, Nodejs, Express, MongoDB, jade. Crear Personajes, subiendo fotos desde el ordenador a la app con el api de cloudinary, edicion de la publicacíon, borrar publicación. Todo almacenado en una base de datos, mongodb. El diseño del frontend aun no se ha implementado. 
 
 ##Descarga/Clone
 Para usarlo primero lo bajamos de github a nuestro computador
