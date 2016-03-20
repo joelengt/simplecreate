@@ -7,6 +7,28 @@ Para usarlo primero lo bajamos de github a nuestro computador
 git clone https://github.com/joelengt/simplecreate.git
 ```
 ##Instalación
+Para iniciar la app, es necesario el archivo config.js, el cual fue eliminado por motivos de seguridad. Tan solo es necesario crear uno similar, llamado config.js, con un contenido similar:
+
+```
+var config  = {
+	mongodb: {
+		localhost: 'mongodb://localhost/personajes',
+		mlab: 'string url mongodb'
+	},
+	cloudinary: {
+		cloud_name: 'user cloud name',
+		api_key: 'user api key',
+		api_secret: 'user api secret'
+	},
+	admin: {
+		name: 'admin',
+		pass: '12345678'
+	}
+}
+
+module.exports = config
+```
+
 Para iniciar debes tener instalado [NodeJS](https://nodejs.org/en/), [MongoDB](https://www.mongodb.org/downloads), en tu Sistema Operativo. Al tener todo, nos ubicamos en la carpeta donde guardamos la app, mediante la terminal/consola. Una vez alli ejecutar:
 ```
 npm install
