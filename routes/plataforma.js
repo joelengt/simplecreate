@@ -1,9 +1,11 @@
 var express = require('express')
 var app = express.Router()
 
+var config = require('../config')
+
 var user_master = {
-	name: 'admin',
-	pass: '12345678'
+	name: config.admin.name,
+	pass: config.admin.pass
 }
 
 app.post('/', function (req, res) {

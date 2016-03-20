@@ -140,7 +140,7 @@ app.put('/update/:id', function (req, res) {
 		age: req.body.age
 	}
 
-	if(req.files.hasOwnProperty("image_avatar")) {
+	if(req.files.hasOwnProperty('image_avatar')) {
 		cloudinary.uploader.upload(req.files.image_avatar.path, function (result) {
 			data.avatar = result.url
 			Personajes.update({"_id":id}, data, function (err) {

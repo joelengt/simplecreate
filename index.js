@@ -3,8 +3,8 @@ var mongoose = require('mongoose')
 var app = express()
 var http = require('http').Server(app)
 var io = require('socket.io')(http)
-var multer = require("multer")
-var cloudinary = require("cloudinary")
+var multer = require('multer')
+var cloudinary = require('cloudinary')
 
 var path = require('path')
 var logger = require('morgan')
@@ -13,8 +13,10 @@ var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var methodOverride = require('method-override')
 
+var config = require('./config')
+
 // Connect MongoDB
-mongoose.connect('mongodb://localhost/personajes', function (err) {
+mongoose.connect( config.mongodb.mlab , function (err) {
 	if(err) {
 		return console.log('Error al conectar base de datos: ' + err)
 	}
@@ -22,9 +24,9 @@ mongoose.connect('mongodb://localhost/personajes', function (err) {
 })
 
 cloudinary.config({
-	cloud_name: "cromlu",
-	api_key: "532668554832195",
-	api_secret: "PLstoVjJNoBiqPhNDGriHyVWVTc"
+	cloud_name: config.cloudinary.cloud_name,
+	api_key: config.cloudinary.api_key,
+	api_secret: config.cloudinary.api_secret
 })
 
 // routes modules require
@@ -41,20 +43,21 @@ var personajes = require('./routes/personajes/index')
 app.set('port', process.env.PORT || 5000)
 app.set('view engine','jade')
 app.set('views', path.join(__dirname, './views'))
+
 //CORS middleware
 // var allowCrossDomain = function(req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*')
-//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
-//     res.header('Access-Control-Allow-Headers', 'X-Requested-With')
+// 	res.header('Access-Control-Allow-Origin', '*')
+// 	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
+// 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
 
-//     next()
+// 	next()
 // }
 
 app.use(express.static(path.join(__dirname, './public')))
 app.use(logger('dev'))
 app.use(multer({dest: './uploads'}))
-app.use(methodOverride("_method"))
-// app.use(allowCrossDomain())
+app.use(methodOverride('_method'))
+// app.use(allowCrossDomain)
 app.use(cookieParser())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
@@ -69,6 +72,8 @@ app.use('/api', api)
 app.use('/chat', chat)
 app.use('/', cantantes)
 app.use('/personajes', personajes)
+
+
 // socket.io connection
 
 io.on('connection', function (socket) {
